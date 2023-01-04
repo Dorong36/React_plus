@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+
+        🌟 이미지 삽입하기
+        - css에서 div의 background-image 속성으로 넣기
+            ex) background-image: url('./img/29cm01.jpg');
+        - tsx 파일에서 태그에 style속성으로 넣기
+            => 이 경우에는 사진을 url로 넣을 수 없고 반드시 import 후 넣어줘야함
+            ex) import titleImg from './img/appleMain.png'
+                <div className='main-bg' style={{backgroundImage : `url(${titleImg})`}}></div>
+                <img src={titleImg}/>
+        
+        - 그럼 들어올때마다 다 import 해야해? => 너무 복잡함
+        - 해결법 => public 폴더에 이미지 보관
+            - 리액트는 사이트 발행전에 html, js, css 파일을 압축함(bundling)
+            - but public 폴더 안은 압축하지 않음
+            - html에서 public 폴더 이미지 사용할 땐 그냥 '/이미지경로'로 사용
+            - 주의점도 존재
+                => naver.com 에서는 괜춘,
+                   but naver.com/shopping 이렇게 뒤에 붙으면 작동 잘 안됨
+                   경로를 '/shopping/이미지.png' 이렇게 써줘야 할 수 있음
+                => create-react-app 공식문서 해결법
+                    ❗️ src={process.env.PUBLIC_URL + '/image.png'} ❗️
+                             현재 사이트 경로 의미
+
+        - import 해오는 문법에서는 public 폴더의 이미지 불러오기 불가!!!
+            => 오류문
+            Module not found: Error: You attempted to import
+            ../public/img/iphone.png which falls outside of the project src/ directory.
+            Relative imports outside of src/ are not supported.
+            You can either move it inside src/, or add a symlink to it from project's node_modules/.   
+            => import 문법으로 할거면 src 폴더 내부에 두자!! 
+
+
+
+     -->
+</body>
+</html>

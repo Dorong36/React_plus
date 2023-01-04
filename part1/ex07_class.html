@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+
+        🌟 class
+        - 요즘에는 function으로 컴포넌트를 짜지만, 과거에는 class로 생성을 했었음
+        - 쓸 일은 적어졌지만, 옛날 코드를 봤을 때 이해할 수 있으면 좋쟈나?? 
+
+        - 기본적인 구조
+            class 클래스이름 extends React.Component {
+                constructor(){
+                    super()
+                }
+                render(): React.ReactNode {
+                    return()
+                }
+            }
+
+        - state 쓰려면
+            constructor 내부 super()아래 
+            this.state = {name : 'kim'} 추가
+            이렇게 오브젝트 형식으로 넣음
+            return문 안에서 사용하려면 this.state.name으로 접근
+
+        - state 수정하려면
+            onClick 이벤트에
+            this.setState({age : 30});
+            이렇게 넣어주는데,
+            특이하게도 여기서는 state 오브젝트에서 입력한 변경 내용에 해당하는 부분을 찾아서 그것만 수정해줌
+            
+        - props는
+            constructor 파라미터로 넣어주고,
+            super()안에 super(props) 이렇게 넣어줌
+
+
+            
+        - 일반 강의 내용으로는 TypeScript 제한 사항들로 오류가 많이 남
+        - 필요시 찾아서 수정작업 필수일듯
+
+
+
+
+
+     -->
+</body>
+</html>

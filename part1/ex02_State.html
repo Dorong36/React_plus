@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--  
+        🌟 state 사용하기
+
+        - useState import
+        - let [자료명, set자료명] = useState(기본값)
+        - 위에 이 형태 사실 destructuring임!!! (충격과 공포)
+        - 쓰는 이유? => state 변동시 자동으로 html이 재렌더링되며 반영되니까!!
+            => 그래서 변동사항이 자주 있는 게 아니라면 굳이 쓸필요가 없기도 함!!
+        - 기본값으로 대표되는 자료형들은 자유롭게 가능!!
+            => string, string[], number ~~~~ (자동으로 잘 들어가더라)
+
+
+        - onClick으로 함수 실행하기
+        - onClick 안에는 함수가 들어가야함
+            => 함수명 혹은 함수문 전체
+            => onClick={함수명()}; or {function(){}}
+        
+        - state 변경시에는 등호가 아닌 변경함수를 써야 정상적으로 재렌더링이 일어남
+        - 변경함수(새로운 state 값)
+
+
+        ❗️ 오류 리포트
+        - onClick에 setState 함수를 그냥 넣으면 오류가 발생함 (onClick에 오류 밑줄)
+            (JSX attribute) React.DOMAttributes<HTMLSpanElement>.onClick?: React.MouseEventHandler<HTMLSpanElement> | undefined
+            'void' 형식은 'MouseEventHandler<HTMLSpanElement> | undefined' 형식에 할당할 수 없습니다.ts(2322)
+            index.d.ts(1484, 9): 필요한 형식은 여기에서 'DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>' 형식에 선언된
+            'onClick' 속성에서 가져옵니다.
+        - 함수 이름만 넣거나 화살표 함수 형태로 넣어주자!!
+            ex) onClick={functionName} or onClick={()=>setState(abc)}
+
+
+        array / object 다룰 때 원본은 보존하는게 좋다!!
+        변경하라고 영구적으로 지우고 변경하기보다는
+
+        
+
+
+
+        
+     -->
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+
+        🌟 props
+        - 부모 컴포넌트에서 자식 컴포넌트로 state를 넘겨줄 수 있다!!
+            1. <자식컴포넌트 작명={state이름}>
+            2. props 파라미터 등록 후 props.작명 사용
+        - props 전송은 부모에서 자식만 가능!! 자식에서 부모, 자식끼리의 전송은 불가능
+            => 컴포넌트 너무 많아지면 props 전달이 복잡해질 수 있음
+        - props로 일반 문자도 전송가능!! ex) color='blue'
+
+
+
+        ❗️ TypeScript로 props 넘기는법!!!
+        - props 타입지정 => 항상 props에서 오류 잦음!! 타입지정 잘 해줘서 사전방지 하쟈
+        - ❗️오브젝트 형식❗️으로!!!! 잊지말자!!!
+            function Profile(props : {name : string, age : number}): JSX.Element{
+                        props는 오브젝트로 담겨 전달 => 오브젝트 타입 문법
+                        언제나 type alias는 사용가능~~~
+                return (
+                    <div>I'm {props.name}!!</div>
+                )
+            }
+
+
+
+     -->
+</body>
+</html>
