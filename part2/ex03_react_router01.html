@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        
+        ✅ 일반 html과 구분되는 react의 페이지 나누는법
+        0. 하나의 페이지(SPA)
+        1. 컴포넌트 만들어서 상세페이지 내용을 채움
+        2. 누가 /detail 접속하면 기존거를 지우고 그 컴포넌트를 보여줌
+            => 이 모든걸 쉽게 하게 도와주는 react-router-dom
+
+        ✅ 세팅하기
+        1. 터미널> npm install react-router-dom@6
+        2. index.tsx 파일에서
+            - import 하기
+                import {BrowserRouter} from 'react-router-dom';
+            - root.render 내부 <App />을 <BrowserRouter>로 감싸주기
+                root.render(
+                    <React.StrictMode>
+                        <BrowserRouter>
+                            <App />
+                        </BrowserRouter>
+                    </React.StrictMode>
+                );
+        
+        ✅ 사용법 - App.tsx에서
+        1. 필요한거 import 해주기
+            import {Routes, Route, Link} from 'react-router-dom';
+        2. App()안에서 path에 따라 렌더링 해주기
+            🔸 ex)
+            <Routes>
+                <Route path='/' element={<span> main </span>}/>
+                <Route path='/detail' element={<span> 상세페이지임 </span>}/>
+            </Routes>
+            => url에 붙는 path에 따라서 내용들을 보여줌
+            => 하지만 페이지를 새로 보여주는 건 아니고, 본인이 해당하는 위치에 element를 띄워주는 정도
+
+            => 페이지까지 바뀌게 하려면?
+            => 기존에 있던 페이지를 특정 path의 element로 넣어주면 됨!!
+            🔸 ex)
+            <Routes>
+                <Route path='/' element={<span> main </span>}/>
+                <Route path='/detail' element={
+                <>
+                    <div className='main-bg' style={{backgroundImage : `url(${titleImg})`}}></div>
+                    <div>
+                    <Container>
+                    <Row>
+                        {
+                        products.map((a, idx) => {
+                            return <Products data={a} idx={idx}></Products>
+                        })
+                        }
+                    </Row>
+                    </Container>
+                    </div>
+                </>
+                }/>
+            </Routes>
+        
+        3. 클릭으로 route 이동하기
+            사용자는 사실 url에 경로쳐서 이동하지는 않음!!
+            => <Link> 태그로 클릭해서 이동할 수 있는 버튼을 만들자!!
+            => 필수적으로 to='router경로' 요소를 가짐!!
+            🔸 ex)
+            <Link to="/">Home</Link>
+            <Link to="/detail">Detail</Link>
+
+    
+
+
+
+     -->
+</body>
+</html>

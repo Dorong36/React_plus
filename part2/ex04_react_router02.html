@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+
+        react-router-dom 더 배워보기 (useNavigate, Outlet)
+        => import {Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom';
+
+
+        1. useNavigate
+        - 페이지 이동을 도와줌
+        - import 해주고
+        - 일반 Link 태그는 버튼같은 역할
+        - 그 외 태그에 onClick함수에서 사용해주기
+            => <Nav.Link onClick={()=>{navigate('/detail')}}>Detail</Nav.Link>
+                                    navigate('이경로로 이동해주세요')
+            => navigate의 괄호 안에 1 넣어주면 한 페이지 앞으로
+                                -1 넣어주면 한 페이지 뒤로
+
+
+        2. 404페이지는
+        - 페이지 접속 잘못했을 때 404페이지가 뜬다
+        - 그 페이지에 어떻게 보낼지 지정해주는 것
+        - route의 path속성을 *로 줌
+            => <Route path='*' element={<div>wrong page url</div>}></Route>
+
+
+        3. Nested Routes
+        - 예를들어 about이라는 페이지를 만드는데
+        - '/about' 이라는 경로를 기본으로 두고,
+        - 그 안에 세분화된 '/about/member', '/about/location' 등의 페이지를 두고싶을때,
+        - 각자 다 지정하는것도 물론 가능
+            <Route path='/about' element={<About/>}></Route>
+            <Route path='/about/member' element={<About/>}></Route>
+            <Route path='/about/location' element={<About/>}></Route>
+        - but 더 편하게 설정할 수 있는게 Nested Routes
+        - Route 태그 사이에 하위 Route를 '/' 없이 삽입
+            <Route path='/about' element={<About/>}>
+                <Route path='member' element={} />
+                <Route path='location' element={} />
+            </Route>
+
+        - 한가지 장점이 더 있는데,
+        - 위 예로 '/about/member'로 들어가면 about과 member가 모두 보여줄 수 있음
+        - 정확히는 상위 요소 내에 하위요소를 넣어주는 것
+        - 방법 => 상위 컴포넌트에서 하위 엘리먼트들이 들어올 자리에 구멍 뚫어주기 => <Outlet>
+            (nested routes의 element 보여주는 곳이 <Outlet>)
+            function About(){
+                return(
+                    <div>
+                        <h4>회사 기본정보~~</h4>
+                        <Outlet></Outlet>
+                    </div>
+                )
+            }
+
+        - nested routes 언제 씀??
+            => 여러 유사한 페이지가 필요할 때
+
+
+        00. Router의 장점
+        - 뒤로가기 버튼 이용가능
+        - 페이지 이동이 쉬움(UI 스위치 조작 쉬움)
+            
+
+
+
+
+     -->
+</body>
+</html>

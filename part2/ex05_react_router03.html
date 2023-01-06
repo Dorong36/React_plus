@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+
+        1. useParams
+        - 데이터를 Props로 받아 사용하는 여러 상세페이지를 만들고 싶다면?
+        - 각각을 만들 수도 있겠지
+            <Route path='/detail/1' element={<Detail data={products[0]}></Detail>}/>
+            <Route path='/detail/2' element={<Detail data={products[1]}></Detail>}/>
+            <Route path='/detail/3' element={<Detail data={products[2]}></Detail>}/>
+                => 근데 상품 수가 무수히 많다면 골치아픔
+        - 이럴때 쓰는게 :url파라미터
+            <Route path='/detail/:id' element={<Detail data={products}></Detail>}/>
+                - 경로 뒤에 ':'와 작명한 파라미터이름 붙여줌
+                - 지금 이상태에서는 /detail/ 뒤에 아무거나 다 붙여도 하나의 페이지로 들어감
+                - 들어오는 url의 :id 값 정보를 어디 담아서 사용하고 싶은데,,, => useParams!!
+                +) 어떤 값이 들어올지 모르는 :id는 onClick 내부 useNavigate 등 경로를 미리 설정해두면 맞춰서 잘 이동함
+        - 렌더링할 하위 컴포넌트에서
+            import {useParams} from 'react-router-dom';
+            function Detail(props : {~~~}){
+                let {id} = useParams(); <=== 여기로 넘겨준 :id 값이 들어온다!!!
+            }
+
+            => id 그냥 받아와서는 쓸수가 없어 왜냐고? undefined면 어쩔거야!!(ㅎㄷㄷ by. ts)
+            => narrowing 해주쟈
+            => 전 이렇게 했어요
+                let {id} = useParams();
+                let idx : number;
+                if(id && typeof id == 'string'){
+                    idx = parseFloat(id);
+                }else{
+                    idx = 0;
+                }
+
+        
+        - 근데 예상치못한 접근이 있다면? ex) 데이터는 3개인데 100입력해버리면?
+            => if 문으로 묶자
+            => 전 이렇게 했어요
+                if(idx >= props.data.length){
+                    return (<div>wrong url</div>)
+                }else { return (렌더링할 것들 다 담어~~) }
+            => 근데 이러고보니 데이터 수를 초과한 숫자는 걸러주는데, 문자가 들어오면 못알아봄
+            => 난 parseFloat으로 문자열 id를 숫자로 바꾸어줬는데, 이 때 그냥 텍스트문자를 바꾸면 NaN이 반환됨
+            => isNaN을 물어보는 조건문 추가
+                if(idx >= props.data.length || isNaN(idx)){
+                    return (<div>wrong url</div>)
+                }else { return (렌더링할 것들 다 담어~~) }
+
+
+        00. 참고사항
+        - url 파라미터 만들 때 여러개 가능!!
+            <Route path='/detail/:id/:color/:molla' element={}/>
+        - 섞어서도 가능
+            <Route path='/detail/:id/info/:molla' element={}/>
+        
+
+        뒤질것같다
+        - 정렬등으로 데이터 오브젝트 배열의 순서가 바뀐다면?
+        - useParams를 배열 인덱스로 사용해 불러왔다면 정렬 조건에 따라 :id 별 페이지가 바뀌어버림
+            => 그렇다면 오브젝트에 있는(없다면 만들어서) id 속성과 :id 값을 비교해서 렌더링하면 고정적이겠네!!
+        
+        - 방법1. 내 방법
+            => return문 밖에 렌더링할 데이터 담을 변수를 미리 선언
+            => forEach문으로 반복검사, 콜백함수에서 object의 id 속성 확인, 일치하면 변수에 데이터 담기
+            => 기존 리턴문에서 데이터를 props로 접근하지 않고 변수로 넣어줌
+
+        - 방법2. 애플좌
+            => find() 함수를 사용했음
+                => array.find(()=>{조건식}) ==> 조건식에 맞는 자료 찾아서 넘겨줌
+            let 찾은상품 = props.data.find( x => x.id == id )
+            => 데이터 들어갈 자리에는
+            찾은상품.title
+
+
+
+     -->
+</body>
+</html>

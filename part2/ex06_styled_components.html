@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+
+        🌟 styled-components
+        1. 설치
+            터미널> npm install --save styled-components
+            +) typescript 환경이라면 styled-component의 type들을 가지고 와야한다.(이거 안하면 오류남)
+            터미널> npm i --save-dev @types/styled-components
+
+        2. 사용법
+            let 컴포넌트이름(대문자시작) = styled.태그이름`css속성`
+            ex)
+            let Box = styled.div`
+                background : grey;
+                padding : 20px;
+            `
+
+            return문 안에서 컴포넌트처럼 <작명한이름 /> 으로 사용
+
+        3. 장점
+            - css 파일을 열지 않아도 된다
+            - 스타일이 다른 js파일로 오염되지 않음
+                => react는 코드가 다 짜지면 하나로 합쳐버림
+                => css파일도 하나로 합쳐지며 모든 곳에 적용이됨
+                => 사이트 사이즈가 커지면 단점이 될 수 있음
+            - 페이지 로딩시간 단축
+                => 별도 css 파일을 참조하지 않음
+                => 보고있는 페이지에만 해당하는 css 코드 실행
+
+        +) 꼭 styled-component가 아니더라도 오염을 방지하는 방법이 있는데,
+            - App.jsx 파일에 대한 css 파일 작명을
+            - App.module.css 로 하면 해당 파일에만 적용됨
+
+        4. styled-component에 props 넘겨주기
+            - 템플릿 리터럴로 css 속성을 넣어줬으니 ${} 사용가능
+            - 사용예시
+                let Btn = styled.button`
+                    background : ${props => props.color}
+                `
+                ...
+                <Btn color="blue" />
+
+            - typescript 환경에서 단일 props
+                let Btn = styled.button<{color : string}>`
+                    background : ${props => props.color}
+                `
+                ...
+                <Btn color="blue" />  
+
+            - typescript 환경에서 여러 props
+                => type alias 또는 interface 사용
+                ex)
+                type MyType = {bg : string, txt : string}
+                interface MyType {bg : string, txt : string}
+                ...
+                let Btn = styled.button<MyType>`
+                    background : ${props => props.bg};
+                    color : ${props => props.txt};
+                    padding : 5px;
+                    margin : 10px;
+                `  
+                ...
+                <Btn bg="green" txt="white"           
+
+            - props 넘겨주는 문법이 의아할 수 있는데,
+              외부 라이브러리 사용법이라 이해가 불필요!
+              그냥 그렇게 만들어짐!!
+            
+
+        5. 참고사항
+            - 당연히 간단한 프로그래밍 가능
+            ex) color : ${props => {props.bg == 'blue'? 'white' : 'black'}}
+            - 상속가능
+            ex) Btn 이라는 styled-component가 마음에 든다!!
+            => let NewBtn = styled.button(Btn)`
+                안에서 커스텀 또한 가능!!
+            `
+
+        6. 단점
+            - js 파일이 매우 복잡해짐
+            - 다른 파일에서 스타일 재사용? 컴포넌트간 import
+                => 그럼 결국 css랑 같아짐
+            - 협업시 css 담당의 숙련도 이슈
+
+
+
+     -->
+</body>
+</html>
