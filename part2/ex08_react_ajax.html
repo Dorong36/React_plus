@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+
+        더보기 누르면 더 많은 제품 불러오기 기능
+        => ajax 활용
+
+        - 서버에 데이터 요청
+            - 서버 : 부탁하면 보내주는 프로그램 / 규격 맞춰서 요구해야함
+                => 방법 (GET : 데이터 가져올 때 / POST : 데이터 보낼 때 ) / 어떤 자료(URL)
+            - 임의의 서버 만들어 뒀음(애플좌)
+                https://codingapple1.github.io/shop/data2.json
+            
+        - ajax 활용 get 요청
+            - 주소창에 서버 입력하면 새로고침 해버림
+            - ajax로 새로고침 없이 get/post 요청
+            - 3가지 방법이 있음
+                1. XMLHttpRequest => 옛날 js
+                2. fetch() => 요즘 js
+                3. axios => 외부 라이브러리 <===== 이거 해보쟈
+                    1) npm install axios
+                    2) app.tsx 에서 import axios from 'axios'
+                    3) onClick으로 준다면
+                        onClick={()=>{
+                        axios.get(
+                            'https://codingapple1.github.io/shop/data2.json'
+                        ).then(
+                            (products)=>{console.log(products)})
+                            // 파라미터에 임의로 입력하면 얻어온 데이터가 담김
+                            // 콘솔에 찍어보면 get으로 받은 다양한 정보들이 들어와있음
+                        }}
+                        // 필요 정보만 보고싶다면? .data 붙여주기
+                        onClick={()=>{
+                        axios.get(
+                            'https://codingapple1.github.io/shop/data2.json'
+                        ).then(
+                            (products)=>{console.log(products.data)})
+                            // 가져온 데이터 내에 필요 데이터들만 뽑아옴
+                        }}.catch(
+                            // 요청 실패시 출력
+                            console.log('fail')
+                        )
+            - 이걸로 기존 데이터에서 더보기 한다면 새로 html 생성할 필요없이
+              state를 조작해서 더 보이게 하는게 정석!! => 야무지더라,,, 이게 react지,,
+            - 응용1) 근데 만약 버튼 누르면 계속 뒤에 데이터들이 나오려면?
+                => 버튼 누른 횟수를 저장해두면 좋을 듯!!
+            - 응용2) 버튼 3회 누르면 상품 더는 없다고 알려주기 (버튼이 없어지거나 글로 알려주기)
+            - 응용3) 버튼 누르면 "로딩중" 글자 띄우기 (실제 서버 환경에서는 로딩이 오래 걸릴 수 있음)
+                => 3번은 대충 답을 알려주면, onClick에서 바로 로딩 메시지 띄우고, 결과 나오면 없애는 코드
+                    + 혹시 오류나도 없애는 코드
+               
+
+            - 서버로 데이터를 보낼때는 POST
+                axios.post('/경로', { 보내고 싶은 데이터 object 형시으로 })
+            - 동시에 ajax 요청 여러개 하려면
+                Promise.all([axios.get('/url1'), axios.get('/url2')]).then(()=>{})
+            - 원래 서버와 문자만 주고받을 수 있음
+                => 근데 array나 object도 가던데?
+                => 오브젝트 속성 값 다 "" 활용해서 문자형으로 하면 주고받을 수 있음
+                => 이게 바로 JSON 자료형
+                    +) 사실 우리가 지금까지 한 것들도 다 문자형으로 왔었는데,
+                       axios 라이브러리가 다 알아서 수정해줬던것!!
+                    => 그래서 JavaScript 기본 내장함수인 fetch() 사용하면
+                       json을 array나 object로 변환하는 과정이 필요!!
+                        fetch('주소').then(
+                            결과 => 결과.json()
+                        ).then(
+                            data => {}
+                        )
+
+
+
+
+
+     -->
+</body>
+</html>

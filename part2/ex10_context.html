@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+
+        🌟 Context
+        - SPA는 props로만 데이터를 주고받는 불편함이 있음
+        - 예를들어 최상위에서 3단계 깊이의 컴포넌트에 데이터를 전달하고 싶다면, 
+          한 번에 전달하는 방법은 없고 2번에 걸쳐서 props로 넘겨줘야함 
+
+        - props 쓰기 싫다면
+            1. Context API(리액트 기본문법) <=== 오늘은 이거
+            2. Redux 등 외부 라이브러리
+
+        - app.tsx 파일에서
+            1. import
+                import {createContext} from 'react'
+            2. 보관함 만들어서 export 해주기 => context 생성해서 변수에 담기 (대문자로 시작)
+                export let Context1 = createContext();
+                    ❗️ typescript 환경에서는 타입지정 해줘야함 
+                        interface AppContextInterface {
+                            name: string;
+                            author: string;
+                            url: string;
+                        }
+                        const AppCtx = createContext<AppContextInterface | null>(null);
+
+
+            3. state 넘겨주고 싶은 태그 감싸고 value 속성에 넘겨줄 state 담기
+                <Context1 value={{state1, state2, ...}}>
+                    <Detail data={products} />
+                </Context1>
+                => 이렇게 콘텍스트로 태그 감싸주면
+                => 사이에 들어간 컴포넌트 포함 모든 하위 컴포넌트에서는 value에 들어간 state 값 사용 가능!!
+
+            4. 하위 컴포넌트에서 사용해보기
+                1) 보관함 import 해주기
+                    import {Context1} from 'App.tsx 경로';
+                2) useContext import
+                    import {useContext} from 'react'
+                3) 보관함 해체해주는 함수
+                    let datas = useContext(Context1);
+                    +) 편하게 사용하려면 destructuring
+                        let {product} = useContext(Context1);
+                - 더 하위 컴포넌트에서도 동일하게 사용가능!!
+
+
+        
+        +) 사실 실전에서는 잘 안씀 - Context API 특징
+            1. state 변경시 state 사용하지 않는 컴포넌트들도 싹다 재렌더링
+                => 사이트 사이즈가 커지면 성능 이슈 발생
+            2. 자식 컴포넌트가 Context API 사용하면 재사용이 어려움
+
+
+
+
+
+
+
+     -->
+</body>
+</html>

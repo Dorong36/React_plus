@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       
+    </style>
+</head>
+<body>
+    <!-- 
+
+        🌟 transition
+        - 전환 애니메이션을 만들고 싶다면
+        - 컴포넌트를 장착하면 애니메이션 나오는 className 하나 만들고 원할 때 장착하기
+            1. 애니메이션 동작 전 className 만들기
+            2. 애니메이션 동작 후 className 만들기
+            3. className에 transition 속성 추가
+            4. 원할 때 2번 className 부착
+
+        1)
+        .start {
+        opacity : 0;
+        }
+
+        2)
+        .end {
+        opacity : 1;
+        transition: opacity 0.5s;  <=== opacity가 변경될 때 0.5초에 걸쳐서 변경해주세요
+        }
+
+        3) 넣으면 됨
+
+        4) 여기가 문젠데
+            - 일단 useEffect로 바꿔주는 방법이 있는데, 이렇게하면 효과가 첫 클릭에 한번 바뀌고 끝임
+                let [fade, setFade] = useState('');
+
+                useEffect(()=>{
+                    setFade('end');
+                }, [props.tap])
+                
+                return (
+                    <div className={`start ${fade}`}>
+                        {[<div>상세정보 입니다</div>, <div>후기 입니다</div>, <div>문의 입니다</div>][props.tap]}
+                    </div>
+                )
+            
+            - 그럼 클리닝으로 리턴문 넣어주면 되겠다!! 댑악!!
+                useEffect(()=>{
+                    setFade('end');
+                    return ()=>{setFade('')}
+                }, [props.tap])
+                    => 근데도 잘 안되네,,,?? 왜지,,,??
+                    => 바로 ❗️React의 automatic batching❗️ 때문!! 
+                        => 이는 리액트18 이후 기능으로,
+                           state 변경 함수가 연속으로 있으면 각자 실행하지 않고,
+                           가장 마지막 코드만 실행해주는 것!!
+
+            - setTimeout으로 딜레이 시켜주자!!
+                useEffect(()=>{
+                    setTimeout(()=>{
+                        setFade('end');
+                    }, 100)
+                    return ()=>{setFade('')}
+                }, [props.tap])
+
+
+
+
+            - 전체 페이지 페이드인 효과
+                let [fade2, setFade2] = useState('');
+
+                useEffect(()=>{
+                    setFade2('end');
+                    return(
+                        () => setFade2('') // unmount 시 실행해서 state 원상복귀
+                    )
+                }, []) // 빈배열 넣어줘서 mount시에만 실행
+                
+                return(
+                    <div className={`container start ${fade2}`}>
+
+
+
+
+
+
+     -->
+     <div></div>
+</body>
+</html>
