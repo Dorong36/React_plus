@@ -68,7 +68,7 @@
                     margin : 10px;
                 `  
                 ...
-                <Btn bg="green" txt="white"           
+                <Btn bg="green" txt="white" />           
 
             - props 넘겨주는 문법이 의아할 수 있는데,
               외부 라이브러리 사용법이라 이해가 불필요!
@@ -77,12 +77,12 @@
 
         5. 참고사항
             - 당연히 간단한 프로그래밍 가능
-            ex) color : ${props => {props.bg == 'blue'? 'white' : 'black'}}
+                ex) color : ${props => {props.bg == 'blue'? 'white' : 'black'}}
             - 상속가능
-            ex) Btn 이라는 styled-component가 마음에 든다!!
-            => let NewBtn = styled.button(Btn)`
-                안에서 커스텀 또한 가능!!
-            `
+                ex) Btn 이라는 styled-component가 마음에 든다!!
+                => let NewBtn = styled.button(Btn)`
+                    안에서 커스텀 또한 가능!!
+            
 
         6. 단점
             - js 파일이 매우 복잡해짐

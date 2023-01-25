@@ -29,24 +29,25 @@
                     2) app.tsx 에서 import axios from 'axios'
                     3) onClick으로 준다면
                         onClick={()=>{
-                        axios.get(
-                            'https://codingapple1.github.io/shop/data2.json'
-                        ).then(
-                            (products)=>{console.log(products)})
-                            // 파라미터에 임의로 입력하면 얻어온 데이터가 담김
-                            // 콘솔에 찍어보면 get으로 받은 다양한 정보들이 들어와있음
+                            axios.get(
+                                'https://codingapple1.github.io/shop/data2.json'
+                            ).then(
+                                (products)=>{console.log(products)})
+                                // 파라미터에 임의로 입력하면 얻어온 데이터가 담김
+                                // 콘솔에 찍어보면 get으로 받은 다양한 정보들이 들어와있음
                         }}
                         // 필요 정보만 보고싶다면? .data 붙여주기
                         onClick={()=>{
-                        axios.get(
-                            'https://codingapple1.github.io/shop/data2.json'
-                        ).then(
-                            (products)=>{console.log(products.data)})
-                            // 가져온 데이터 내에 필요 데이터들만 뽑아옴
-                        }}.catch(
-                            // 요청 실패시 출력
-                            console.log('fail')
-                        )
+                            axios.get(
+                                'https://codingapple1.github.io/shop/data2.json'
+                            ).then(
+                                (products)=>{console.log(products.data)}
+                                // 가져온 데이터 내에 필요 데이터들만 뽑아옴
+                            ).catch(
+                                // 요청 실패시 출력
+                                console.log('fail')
+                            )
+                        }}
             - 이걸로 기존 데이터에서 더보기 한다면 새로 html 생성할 필요없이
               state를 조작해서 더 보이게 하는게 정석!! => 야무지더라,,, 이게 react지,,
             - 응용1) 근데 만약 버튼 누르면 계속 뒤에 데이터들이 나오려면?
@@ -58,7 +59,7 @@
                
 
             - 서버로 데이터를 보낼때는 POST
-                axios.post('/경로', { 보내고 싶은 데이터 object 형시으로 })
+                axios.post('/경로', { 보내고 싶은 데이터 object 형식으로 })
             - 동시에 ajax 요청 여러개 하려면
                 Promise.all([axios.get('/url1'), axios.get('/url2')]).then(()=>{})
             - 원래 서버와 문자만 주고받을 수 있음
