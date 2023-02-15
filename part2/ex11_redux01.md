@@ -222,7 +222,7 @@ let user = createSlice({
     agePlus(state, action){
         state.age += action.payload;
     }
-  }
+  }`
 ```
 
 
@@ -243,3 +243,8 @@ let user = createSlice({
 - 숙제2
   - /detail에서 주문하기 누르면 정보 장바구니러 넘어가기
   - state 설정에서 넣어주면 되지 않겠니??
+
+
+응용1. 표의 행마다 삭제버튼 만들고 그거 누르면 상품이 삭제되게 만들려면?
+
+응용2. 주문하기 버튼 누를 때 이미 상품이 state안에 있으면 추가가 아니라 기존 항목 수량증가만?
